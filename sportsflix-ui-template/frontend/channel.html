@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportsFlix - Player</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="channel.css">
+  <link rel="stylesheet" href="donation.css">
+</head>
+<body class="channel-page">
+  <div class="channel-header">
+    <a href="home.html" class="back-button">← Back</a>
+    <div class="channel-header-right">
+      <div class="channel-title-wrapper">
+        <h1 id="channel-title">Loading...</h1>
+        <span id="live-badge" class="live-badge" style="display: none;">LIVE</span>
+      </div>
+      <button type="button" class="channel-bmc donation-trigger" data-donation="open">
+        <img class="donation-image" src="logo/donate.png" alt="Donate Us">
+      </button>
+    </div>
+  </div>
+
+  <div class="channel-player-container">
+    <section class="whatsapp-section channel-whatsapp">
+      <a href="https://whatsapp.com/channel/0029Va9DGWMHLHQdbTcTSG42" target="_blank" class="whatsapp-button">
+        For the latest links and updates - Join our <span class="whatsapp-highlight">WhatsApp</span> channel
+      </a>
+    </section>
+    <!-- Animated Background -->
+    <div class="animated-background">
+      <div class="bg-gradient"></div>
+      <div class="bg-pattern"></div>
+    </div>
+    
+    <!-- Player with Logo Overlay -->
+    <div id="player-wrapper" class="player-wrapper">
+      <div id="logo-overlay" class="logo-overlay">
+        <img id="channel-logo" src="" alt="Channel Logo" class="channel-logo-img">
+      </div>
+      <div id="video-container" class="video-container">
+        <video id="player" controls crossorigin="anonymous"></video>
+        <div id="play-button-overlay" class="play-button-overlay">
+          <div class="play-button-circle">
+            <div class="play-icon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="channel.js"></script>
+  <script src="donation.js"></script>
+  <script src="security.js"></script>
+</body>
+</html>
+
