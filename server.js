@@ -25,16 +25,13 @@ app.use((req, res, next) => {
 
 // Serve specific HTML files BEFORE static middleware
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/home.html"));
+  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/index.html"));
 });
 app.get('/index.html', (req, res) => {
-  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/home.html"));
+  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/index.html"));
 });
 app.get('/home.html', (req, res) => {
-  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/home.html"));
-});
-app.get('/player.html', (req, res) => {
-  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/player.html"));
+  res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/index.html"));
 });
 app.get('/channel.html', (req, res) => {
   res.sendFile(path.join(__dirname, "../sportsflix-ui-template/frontend/channel.html"));
@@ -45,7 +42,6 @@ app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // Serve UI template static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, "../sportsflix-ui-template/frontend")));
-app.use(express.static(path.join(__dirname, "../frontend")));
 
 // M3U playlist sources from /home/dopramo/Documents/SPORTS/streamraw
 const SOURCES=[
