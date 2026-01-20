@@ -2,9 +2,17 @@
   "name": "sportsflix",
   "version": "1.0.0",
   "description": "IPTV Sports Streaming Web Application",
+  "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "install": "cd backend && npm install"
+    "build": "cd backend && npm install",
+    "postinstall": "cd backend && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "cheerio": "^1.0.0-rc.12"
   },
   "engines": {
     "node": "20"
