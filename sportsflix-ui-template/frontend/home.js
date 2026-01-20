@@ -4,7 +4,7 @@ function loadChannels() {
   grid.innerHTML = '<div class="loading">Loading channels...</div>';
   
   // Load unified channels (CricHD and M3U combined internally)
-  fetch('/api/channels')
+  fetch('/api/all-channels')
     .then(r => r.json())
     .then(data => {
       displayChannels(data);
