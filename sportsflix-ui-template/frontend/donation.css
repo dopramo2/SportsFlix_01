@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
+/* Donation modal */
+.donation-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+}
+
+.donation-trigger {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation-image {
+  height: 65px;
+  width: auto;
+  display: block;
+}
+
+.channel-bmc.donation-trigger .donation-image {
+  height: 48px;
+}
+
+.donation-trigger:hover {
+  transform: translateY(-1px);
+}
+
+.donation-trigger:active {
+  transform: translateY(0);
+}
+
+.donation-modal.open {
+  display: flex;
+}
+
+.donation-card {
+  width: 100%;
+  max-width: 560px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.donation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.donation-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.donation-close {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.donation-body {
+  padding: 16px 20px 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.donation-item {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.donation-item h4 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #9bdcff;
+}
+
+.donation-address {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-all;
+  color: #e6e6e6;
+}
+
+.donation-network {
+  font-size: 12px;
+  color: #b1b1b1;
+}
+
+.donation-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.donation-copy {
+  background: #00d4ff;
+  color: #000;
+  border: 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.donation-copy.copied {
+  background: #1dd1a1;
+}
+
+@media (max-width: 520px) {
+  .donation-card {
+    border-radius: 12px;
+  }
+
+  .donation-header h3 {
+    font-size: 16px;
+  }
+
+  .donation-copy {
+    width: 100%;
+  }
+
+  .donation-actions {
+    justify-content: stretch;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .donation-image {
+    height: 56px;
+  }
+
+  .channel-bmc.donation-trigger .donation-image {
+    height: 42px;
+  }
+}
+
