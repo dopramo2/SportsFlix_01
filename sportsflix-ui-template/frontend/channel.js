@@ -13,6 +13,23 @@ const streamAttemptCounts = {};
 const MAX_ATTEMPTS_PER_STREAM = 2; // direct + proxy
 let playbackInProgress = false;
 
+// Streams that MUST be loaded directly (no proxy) - CloudFront protected
+const DIRECT_ONLY_DOMAINS = [
+  'thepapare.com',
+  'livecdn3.thepapare.com',
+  'myco.io',
+  'ml-pull-dvc-myco.io'
+];
+
+function shouldLoadDirect(url) {
+  try {
+    const urlObj = new URL(url);
+    return DIRECT_ONLY_DOMAINS.some(domain => urlObj.hostname.includes(domain));
+  } catch(e) {
+    return false;
+  }
+}
+
 // Load channel data
 async function loadChannel() {
   try {
@@ -137,16 +154,22 @@ function startPlayback() {
   const isHLS = url.includes('.m3u8') || url.includes('/hls/');
   let triedProxy = false;
   let streamUrl = url; // try direct URL first
+  const forceDirectLoad = shouldLoadDirect(url);
   
   // If the page is served over HTTPS and the stream URL is insecure (http),
   // force use of the backend proxy to avoid browser Mixed Content blocking.
+  // BUT skip proxy for CloudFront-protected streams (they need direct browser access)
   try {
     const isHttpsPage = window.location.protocol === 'https:';
     // Proxy if page is HTTPS and the source is insecure OR when it's an HLS manifest
-    if (isHttpsPage && (url.startsWith('http://') || isHLS)) {
+    // BUT NOT for direct-only streams (CloudFront protected)
+    if (!forceDirectLoad && isHttpsPage && (url.startsWith('http://') || isHLS)) {
       streamUrl = `/proxy?url=${encodeURIComponent(url)}`;
       triedProxy = true; // already using proxy
       console.log('Using backend proxy for stream due to HTTPS/CORS/HLS');
+    } else if (forceDirectLoad) {
+      console.log('Loading stream directly (CloudFront protected, no proxy)');
+      triedProxy = true; // prevent proxy fallback for these streams
     }
   } catch (e) {
     // ignore - defensive
