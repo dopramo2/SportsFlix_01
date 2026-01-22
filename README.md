@@ -17,5 +17,5 @@ node server.js
 3. Start Command: `cd backend && node server.js`
 4. Plan: Free
 
-The app will be available on port 5000.
+The app will be available on port 5000..
 
